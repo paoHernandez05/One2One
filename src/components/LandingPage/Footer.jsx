@@ -1,13 +1,13 @@
-import styles from "./Navbar.module.css";
+import styles from "./Footer.module.css";
 import { MessageCircle } from "lucide-react";
-function Navbar() {
+function Footer() {
   return (
-    <nav className={styles.navbar}>
+    <footer className={styles.footer}>
       <div className={styles.nameLogoContainer}>
-        <div className={styles.navbarImgContainer}>
+        <div className={styles.imgContainer}>
           <MessageCircle size={28} color="white" />
         </div>
-        <h2>One2One</h2>
+        <h3>One2One</h3>
       </div>
       <ul>
         <li>
@@ -23,12 +23,9 @@ function Navbar() {
           <a href="#seguridad">Seguridad</a>
         </li>
       </ul>
-      <div className={styles.navbarButtonContainer}>
-        <button className={styles.navbarLoginBtn}>Iniciar sesión</button>
-        <button className={styles.navbarRegisterBtn}>Crear cuenta</button>
-      </div>
-    </nav>
+      <span>© 2026 One2One. Todos los derechos reservados.</span>
+    </footer>
   );
 }
 
-export default Navbar;
+export default Footer;

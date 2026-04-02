@@ -3,4 +3,5 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 60px 80px 60px 80px;
+  scroll-margin-top: 80px;
 }

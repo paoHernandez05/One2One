@@ -25,9 +25,12 @@
   width: 60px;
   height: 60px;
   border-radius: 16px;
-
-  background-image: var(--primary-gradient);
+  background-color: #e8f7f5;
   color: white;
+}
+
+.iconContainer svg {
+  color: #1dafa1;
 }
 
 .title {

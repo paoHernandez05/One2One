@@ -1,12 +1,20 @@
 .navbar {
   display: flex;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 60px;
   padding-right: 60px;
   border-bottom: solid #e3e8ed 0.2px;
+  transition: all 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  z-index: 1;
 }
 
 .navbar ul {
@@ -20,6 +28,11 @@
   text-decoration: none;
   color: var(--secondary-color);
   font-weight: 500;
+  transition: 0.2s;
+}
+
+.navbar a:hover {
+  color: var(--title-color);
 }
 
 .nameLogoContainer {
@@ -37,6 +50,7 @@
   background-image: var(--primary-gradient);
   width: 50px;
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 20px;
   height: 20px;
@@ -61,12 +75,14 @@
   cursor: pointer;
   text-align: center;
   font-weight: 500;
+  transition: 0.5s;
+  overflow: hidden;
 }
 
 .navbarLoginBtn {
-  background: none;
+  background-image: linear-gradient(0.5turn, #387ad5, #21a7a9);
   border: none;
-  color: #1f2937;
+  color: white;
 }
 
 .navbarRegisterBtn {
@@ -79,4 +95,28 @@
 .navbarRegisterBtn:hover {
   background-color: #387ad5;
   color: white;
+}
+
+.navbarButtonContainer button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.navbarButtonContainer button:hover {
+  transform: scale(1.05);
+}
+
+.navbarButtonContainer button:hover::before {
+  left: 100%;
 }

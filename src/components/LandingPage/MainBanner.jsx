@@ -1,0 +1,18 @@
+import styles from "./MainBanner.module.css";
+function MainBanner() {
+  return (
+    <div className={styles.mainContainer}>
+      <h2 className={styles.title}>Empieza a comunicarte hoy con One2One</h2>
+      <p className={styles.description}>
+        Únete a miles de personas que ya disfrutan de mensajería segura,
+        llamadas de calidad y privacidad total.
+      </p>
+      <div className={styles.btnsContainer}>
+        <button>Crear Cuenta</button>
+        <button>Iniciar sesión</button>
+      </div>
+    </div>
+  );
+}
+
+export default MainBanner;

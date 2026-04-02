@@ -4,7 +4,7 @@ import FeatureSection from "./FeatureSection";
 
 function Features() {
   return (
-    <div className={styles.featuresMainContainer}>
+    <div className={styles.featuresMainContainer} id="caracteristicas">
       <FeaturesText />
       <FeatureSection />
     </div>

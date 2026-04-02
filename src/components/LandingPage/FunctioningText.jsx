@@ -1,13 +1,12 @@
+import styles from "./FunctioningText.module.css";
+
 function FunctioningText() {
-  const text = [
-    {
-      title: "¿Cómo funciona",
-      subtitle: "Empieza a comunicarte en tres simples pasos",
-    },
-    {
-      title: "Seguridad y privacidad",
-      subtitle:
-        "Tu seguridad es nuestra prioridad. One2One protege cada conversación.",
-    },
-  ];
+  return (
+    <div className={styles.functioningTitle}>
+      <h2>¿Cómo funciona?</h2>
+      <p>Empieza a comunicarte en tres simples pasos</p>
+    </div>
+  );
 }
+
+export default FunctioningText;

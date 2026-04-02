@@ -4,7 +4,7 @@ import styles from "./HeroSection.module.css";
 function HeroSection() {
   return (
     <>
-      <div className={styles.heroSectionMainContainer}>
+      <div className={styles.heroSectionMainContainer} id="inicio">
         <HeroText />
         <ChatPreview />
       </div>
