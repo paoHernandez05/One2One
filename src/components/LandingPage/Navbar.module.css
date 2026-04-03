@@ -48,7 +48,6 @@
 
 .navbarImgContainer {
   background-image: var(--primary-gradient);
-  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +57,7 @@
   border-radius: 10px;
 }
 
-.navbarImgContainer img {
+.navbarImgContainer svg {
   width: 30px;
 }
 

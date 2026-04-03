@@ -2,11 +2,27 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/user/LandingPage";
+import RegisterUserLayout from "./pages/user/RegisterUserLayout";
+import LoginForm from "./components/RegisterUserPage/LoginForm";
+import RegisterForm from "./components/RegisterUserPage/RegisterForm";
+import VerifyForm from "./components/RegisterUserPage/VerifyForm";
 import "./index.css";
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
-  /*{ path: "/register", element: <RegisterUserPage /> },
+  {
+    path: "/auth",
+    element: <RegisterUserLayout />,
+    children: [
+      { index: true, element: <LoginForm /> },
+      { path: "login", element: <LoginForm /> },
+      { path: "register", element: <RegisterForm /> },
+      { path: "verify", element: <VerifyForm /> },
+    ],
+  },
+
+  /*
   { path: "/login", element: <LoginUserPage /> },
+  { path: "/verify", element: <VerifyUserPage /> },
   { path: "/chat", element: <ChatPage /> },
   { path: "/settings", element: <SettingsPage /> },
   { path: "/profile/:userid", element: <UserProfilePage /> },
