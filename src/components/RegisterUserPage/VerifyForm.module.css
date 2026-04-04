@@ -60,10 +60,6 @@
   transition: 0.2s;
 }
 
-.emailContainer:focus-within {
-  border-color: #6a5cff;
-}
-
 .input {
   flex: 1;
   min-width: 0;
@@ -92,7 +88,9 @@
 
 .actions {
   display: flex;
+  align-items: center;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .actions svg:hover {
@@ -134,4 +132,48 @@
 .editing {
   background: white;
   border: 1px solid #14b8a6;
+}
+
+.change {
+  font-size: 14px;
+  color: #14b8a6;
+  cursor: pointer;
+  white-space: nowrap; /* evita que se rompa línea */
+}
+
+.emailMessage {
+  color: var(--secondary-color);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.sendCode {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: solid 1px #e0e5eb;
+  background-color: white;
+  color: var(--title-color);
+  font-size: 15px;
+  font-weight: 550;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sendCode svg {
+  color: var(--title-color);
+  transition-duration: 0.5s;
+}
+
+.sendCode:hover {
+  background-color: #4d65e0;
+  color: white;
+}
+
+.sendCode:hover svg {
+  color: white;
 }

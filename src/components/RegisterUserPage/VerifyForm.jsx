@@ -1,5 +1,12 @@
-import { ShieldCheck } from "lucide-react";
-import { Pencil, Check, X, Mail } from "lucide-react";
+import {
+  Pencil,
+  Check,
+  X,
+  Mail,
+  Send,
+  ShieldCheck,
+  SendToBack,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./VerifyForm.module.css";
@@ -69,20 +76,45 @@ function VerifyForm() {
           )}
 
           {!editing ? (
-            <Pencil
-              size={18}
-              onClick={handleEdit}
-              className={styles.iconRight}
-            />
+            <>
+              <Pencil
+                size={18}
+                onClick={handleEdit}
+                className={styles.iconRight}
+              />
+              <span onClick={handleEdit} className={styles.change}>
+                Cambiar
+              </span>
+            </>
           ) : (
             <div className={styles.actions}>
-              <Check size={18} onClick={handleSave} />
-              <X size={18} onClick={handleCancel} />
+              <Check
+                size={18}
+                onClick={handleSave}
+                color="#14b8a6"
+                cursor="pointer"
+              />
+              <X
+                size={18}
+                onClick={handleCancel}
+                color="#14b8a6"
+                cursor="pointer"
+              />
             </div>
           )}
         </div>
       </div>
-      <button>Confirmar</button>
+      <p className={styles.emailMessage}>
+        ¿Te equivocaste de correo? Haz click en "Cambiar" para corregirlo antes
+        de solicitar el código.{" "}
+      </p>
+      <button className={styles.sendCode}>
+        <Send size={16} />
+        Recibir código por email
+      </button>
+      <div>
+        <p>Ingresa el código de 6 dígitos</p>
+      </div>
       <p onClick={() => navigate("/auth/login")}>Volver al login</p>
     </>
   );
