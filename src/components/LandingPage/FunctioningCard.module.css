@@ -31,7 +31,7 @@
   justify-content: center;
 }
 
-.iconContainer > svg {
+.iconContainer>svg {
   background: white;
   border-radius: 32px;
   padding: 10px;
@@ -46,4 +46,11 @@
 .description {
   font-size: 0.95rem;
   color: #666;
+}
+
+@media (max-width: 1060px) {
+  .card {
+    gap: 0;
+    text-align: center;
+  }
 }

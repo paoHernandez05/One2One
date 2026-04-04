@@ -15,3 +15,11 @@
   font-size: 18px;
   font-weight: 400;
 }
+
+
+@media (max-width: 1060px) {
+  .functioningTitle {
+    line-height: normal;
+    text-align: center;
+  }
+}

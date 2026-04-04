@@ -40,3 +40,15 @@
   font-size: 0.95rem;
   color: #666;
 }
+
+
+@media (max-width: 1060px) {
+  .card {
+    gap: 0;
+  }
+
+  .title,
+  .description {
+    margin: 15px 0;
+  }
+}
