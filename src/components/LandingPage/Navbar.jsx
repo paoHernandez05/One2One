@@ -13,16 +13,16 @@ function Navbar() {
     <>
       <ul>
         <li>
-          <a href="#inicio">Inicio</a>
+          <a href="#inicio" onClick={() => setOpen(false)}>Inicio</a>
         </li>
         <li>
-          <a href="#caracteristicas">Características</a>
+          <a href="#caracteristicas" onClick={() => setOpen(false)}>Características</a>
         </li>
         <li>
-          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#como-funciona" onClick={() => setOpen(false)}>Cómo funciona</a>
         </li>
         <li>
-          <a href="#seguridad">Seguridad</a>
+          <a href="#seguridad" onClick={() => setOpen(false)}>Seguridad</a>
         </li>
       </ul>
       <div className={styles.navbarButtonContainer}>
