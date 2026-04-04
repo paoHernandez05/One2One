@@ -28,7 +28,7 @@ function LoginForm() {
       return;
     }
 
-    navigate("/auth/verify");
+    navigate("/auth/verify", { state: { email } });
   };
 
   const togglePassword = () => {

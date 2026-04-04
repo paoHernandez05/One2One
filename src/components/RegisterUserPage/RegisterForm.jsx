@@ -27,8 +27,7 @@ function RegisterForm() {
       alert("La contraseña debe tener al menos 6 caracteres.");
       return;
     }
-
-    console.log("Inicio de sesión exitoso");
+    navigate("/auth/verify", { state: { email } });
   };
   const togglePassword = () => {
     setShowPassword(!showPassword);

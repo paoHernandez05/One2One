@@ -1,0 +1,137 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #e6f4f1; /* verde muy suave */
+  color: #2bb3a3; /* color del icono */
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.text h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--title-color);
+}
+
+.text span {
+  font-size: 15px;
+  color: var(--secondary-color);
+}
+
+.description {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--secondary-color);
+  line-height: 1.5;
+}
+
+.emailVerify {
+  color: var(--title-color);
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.emailContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 2px solid #14b8a6;
+  border-radius: 16px;
+  padding: 8px;
+  background-color: #edf6f6;
+  transition: 0.2s;
+}
+
+.emailContainer:focus-within {
+  border-color: #6a5cff;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 14px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.readOnly {
+  color: white;
+  cursor: default;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.actions svg:hover {
+  color: #111827;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+.iconLeft {
+  color: #14b8a6;
+}
+
+.iconRight {
+  cursor: pointer;
+  color: #14b8a6;
+}
+
+.emailText {
+  flex: 1;
+  min-width: 0;
+
+  font-size: 14px;
+  color: #111827;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.readMode {
+  background: transparent;
+}
+.editing {
+  background: white;
+  border: 1px solid #14b8a6;
+}
