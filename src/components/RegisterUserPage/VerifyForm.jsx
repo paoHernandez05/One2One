@@ -17,13 +17,13 @@ function VerifyForm() {
   const [email, setEmail] = useState(initialEmail);
   const [tempEmail, setTempEmail] = useState(initialEmail);
   const [editing, setEditing] = useState(false);
+  const token = localStorage.getItem("verificationToken");
+
 
   useEffect(() => {
-    // Intentamos obtener el token y el email del localStorage
-    const token = localStorage.getItem("verificationToken");
 
     // Si no existe el token, significa que no ha pasado por el login
-    if (!token) {
+    if (!token || !initialEmail) {
       navigate("/auth/login");
     }
   }, [navigate]);

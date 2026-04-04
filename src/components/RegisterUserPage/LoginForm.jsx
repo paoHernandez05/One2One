@@ -49,7 +49,7 @@ function LoginForm() {
         localStorage.setItem("verificationToken", response.data.token);
         localStorage.setItem("userEmail", email);
         console.log("Cuenta no verificada, redirigiendo...");
-        navigate("/auth/verify");
+        navigate("/auth/verify", { state: { email } });
         return;
       }
 
