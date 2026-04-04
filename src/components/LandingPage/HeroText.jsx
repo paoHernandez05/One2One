@@ -1,5 +1,11 @@
 import styles from "./HeroText.module.css";
+import { useState, useEffect } from "react";
+import { useIsMobile } from "../../hooks/isMobile";
+
+
 function HeroText() {
+  const isMobile = useIsMobile(1060);
+
   return (
     <div className={styles.mainContainer}>
       <p className={styles.titleParagraph}>
@@ -10,7 +16,9 @@ function HeroText() {
       </p>
 
       <p className={styles.paragraph}>
-        Plataforma gratuita para chatear, llamar y conectarte con <br />
+        Plataforma gratuita para chatear, llamar y conectarte con
+        {isMobile ? "" : <br />}
+
         cualquier persona en tiempo real
       </p>
       <div className={styles.buttonContainer}>

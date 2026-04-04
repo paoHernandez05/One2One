@@ -13,8 +13,12 @@
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  -webkit-backdrop-filter: blur(5px);
+  /* Safari support */
   z-index: 1;
+
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .footer ul {
@@ -66,4 +70,17 @@
 .footer span {
   color: var(--secondary-color);
   font-size: 12px;
+}
+
+
+@media (max-width: 1060px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer ul {
+    padding-left: 0;
+    gap: 20px;
+    justify-content: space-between;
+  }
 }

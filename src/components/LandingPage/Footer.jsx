@@ -1,6 +1,9 @@
 import styles from "./Footer.module.css";
 import { MessageCircle } from "lucide-react";
+import { useIsMobile } from "../../hooks/isMobile";
 function Footer() {
+  const isMobile = useIsMobile(1060);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.nameLogoContainer}>

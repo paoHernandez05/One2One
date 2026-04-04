@@ -5,3 +5,16 @@
   padding: 60px 80px 60px 80px;
   scroll-margin-top: 80px;
 }
+
+
+@media (max-width: 1060px) {
+  .heroSectionMainContainer {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+  }
+
+}
