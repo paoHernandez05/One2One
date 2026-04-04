@@ -5,8 +5,10 @@ import LoginForm from "../../components/RegisterUserPage/LoginForm";
 import RegisterForm from "../../components/RegisterUserPage/RegisterForm";
 import VerifyForm from "../../components/RegisterUserPage/VerifyForm";
 import { Outlet } from "react-router-dom";
+import { useIsMobile } from "../../hooks/isMobile";
 
 function RegisterUserLayout() {
+  const isMobile = useIsMobile(1060);
   const [view, setView] = useState("login");
 
   const renderView = () => {
@@ -24,7 +26,12 @@ function RegisterUserLayout() {
   return (
     <>
       <div className={styles.container}>
-        <LeftPanel />
+        {
+          isMobile ?
+            ""
+            :
+            <LeftPanel />
+        }
         <div className={styles.rightView}>
           <Outlet />
         </div>
