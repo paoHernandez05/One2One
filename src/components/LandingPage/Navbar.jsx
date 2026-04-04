@@ -2,9 +2,10 @@ import styles from "./Navbar.module.css";
 import { MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useIsMobile } from "../../hooks/isMobile";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-
+  const navigate = useNavigate();
   const isMobile = useIsMobile(1060);
   const [open, setOpen] = useState(false);
 
@@ -26,8 +27,8 @@ function Navbar() {
         </li>
       </ul>
       <div className={styles.navbarButtonContainer}>
-        <button className={styles.navbarLoginBtn}>Iniciar sesión</button>
-        <button className={styles.navbarRegisterBtn}>Crear cuenta</button>
+        <button className={styles.navbarLoginBtn} onClick={() => navigate("/auth/login")}>Iniciar sesión</button>
+        <button className={styles.navbarRegisterBtn} onClick={() => navigate("/auth/register")}>Crear cuenta</button>
       </div>
     </>
   );

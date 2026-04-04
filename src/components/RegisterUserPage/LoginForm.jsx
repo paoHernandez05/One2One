@@ -14,23 +14,55 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      if (!email || !password) {
+        alert("Favor de llenar todos los campos.");
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        alert("Correo inválido.");
+        return;
+      }
+      if (password.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
 
-    if (!email || !password) {
-      alert("Favor de llenar todos los campos.");
-      return;
-    }
-    if (!emailRegex.test(email)) {
-      alert("Correo inválido.");
-      return;
-    }
-    if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres.");
-      return;
+      const res = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
+      });
+
+      const response = await res.json();
+
+
+      if (!response.success) { console.log("Credenciales Invalidas"); return; }
+
+      if (response.success && response.data.needsVerification) {
+        localStorage.setItem("verificationToken", response.data.token);
+        localStorage.setItem("userEmail", email);
+        console.log("Cuenta no verificada, redirigiendo...");
+        navigate("/auth/verify");
+        return;
+      }
+
+      console.log("Login exitoso");
+      navigate("/");
+    } catch (error) {
+
     }
 
-    navigate("/auth/verify", { state: { email } });
+
+
+
+
   };
 
   const togglePassword = () => {
