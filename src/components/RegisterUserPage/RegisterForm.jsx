@@ -12,22 +12,43 @@ function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      if (!email || !password || !user) {
+        alert("Favor de llenar todos los campos.");
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        alert("Correo inválido.");
+        return;
+      }
+      if (password.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
 
-    if (!email || !password || !user) {
-      alert("Favor de llenar todos los campos.");
-      return;
-    }
-    if (!emailRegex.test(email)) {
-      alert("Correo inválido.");
-      return;
-    }
-    if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres.");
-      return;
-    }
-    navigate("/auth/verify", { state: { email } });
+      const res = await fetch("http://100.74.0.80:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, username: user, password }),
+        credentials: "include",
+      });
+
+      const response = await res.json();
+
+      if (!response.success) {
+        console.log("Credenciales Inválidas");
+        return;
+      }
+
+      localStorage.setItem("verificationToken", response.data.token);
+      localStorage.setItem("userEmail", email);
+
+      navigate("/auth/verify", { state: { email } });
+    } catch (error) {}
   };
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -79,11 +100,7 @@ function RegisterForm() {
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </span>
         </div>
-        <button
-          type="submit"
-          className={styles.button}
-          onClick={() => setView("verify")}
-        >
+        <button type="submit" className={styles.button}>
           Registrarse
         </button>
       </form>

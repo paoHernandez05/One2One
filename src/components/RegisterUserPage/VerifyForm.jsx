@@ -13,22 +13,18 @@ import styles from "./VerifyForm.module.css";
 function VerifyForm() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const initialEmail = state?.email || localStorage.getItem("userEmail") || "";
+  const initialEmail = state?.email || "";
   const [email, setEmail] = useState(initialEmail);
   const [tempEmail, setTempEmail] = useState(initialEmail);
   const [editing, setEditing] = useState(false);
-  const token = localStorage.getItem("verificationToken");
-
 
   useEffect(() => {
-
-    // Si no existe el token, significa que no ha pasado por el login
-    if (!token || !initialEmail) {
+    if (!state?.email) {
       navigate("/auth/login");
     }
-  }, [navigate]);
+  }, [state, navigate]);
 
-  if (!localStorage.getItem("verificationToken")) return null;
+  if (!state?.email) return null;
 
   const handleEdit = () => {
     setEditing(true);
@@ -61,8 +57,9 @@ function VerifyForm() {
       <p className={styles.emailVerify}>Correo de verificación</p>
       <div className={styles.emailContainer}>
         <div
-          className={`${styles.inputWrapper} ${editing ? styles.editing : styles.readMode
-            }`}
+          className={`${styles.inputWrapper} ${
+            editing ? styles.editing : styles.readMode
+          }`}
         >
           <Mail size={18} className={styles.iconLeft} />
 

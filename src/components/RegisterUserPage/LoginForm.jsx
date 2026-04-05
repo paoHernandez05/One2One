@@ -6,14 +6,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
 function LoginForm() {
-
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +28,7 @@ function LoginForm() {
         return;
       }
 
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch("http://100.74.0.80:3000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,8 +41,10 @@ function LoginForm() {
 
       const response = await res.json();
 
-
-      if (!response.success) { console.log("Credenciales Invalidas"); return; }
+      if (!response.success) {
+        console.log("Credenciales Invalidas");
+        return;
+      }
 
       if (response.success && response.data.needsVerification) {
         localStorage.setItem("verificationToken", response.data.token);
@@ -60,6 +59,11 @@ function LoginForm() {
     } catch (error) {
 
     }
+
+
+
+
+
   };
 
   const togglePassword = () => {
