@@ -40,6 +40,8 @@ function LoginForm() {
         credentials: "include",
       });
 
+
+
       const response = await res.json();
 
 
@@ -58,11 +60,6 @@ function LoginForm() {
     } catch (error) {
 
     }
-
-
-
-
-
   };
 
   const togglePassword = () => {

@@ -4,7 +4,7 @@ function LandingPage() {
         try {
 
 
-            const res = await fetch("http://localhost:3000/api/app/test", {
+            const res = await fetch("http://localhost:3000/api/conversation/allConversations", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
