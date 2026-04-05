@@ -6,6 +6,7 @@ import RegisterUserLayout from "./pages/user/RegisterUserLayout";
 import LoginForm from "./components/RegisterUserPage/LoginForm";
 import RegisterForm from "./components/RegisterUserPage/RegisterForm";
 import VerifyForm from "./components/RegisterUserPage/VerifyForm";
+import AppPage from "./pages/user/AppPage";
 import "./index.css";
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "verify", element: <VerifyForm /> },
     ],
   },
+  { path: "/test", element: <AppPage /> }
 
   /*
   { path: "/login", element: <LoginUserPage /> },

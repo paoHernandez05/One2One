@@ -54,7 +54,7 @@ function LoginForm() {
       }
 
       console.log("Login exitoso");
-      navigate("/");
+      navigate("/test");
     } catch (error) {
 
     }
