@@ -1,10 +1,11 @@
 import styles from "./HeroText.module.css";
 import { useState, useEffect } from "react";
 import { useIsMobile } from "../../hooks/isMobile";
-
+import { useNavigate } from "react-router-dom";
 
 function HeroText() {
   const isMobile = useIsMobile(1060);
+  const navigate = useNavigate();
 
   return (
     <div className={styles.mainContainer}>
@@ -18,12 +19,21 @@ function HeroText() {
       <p className={styles.paragraph}>
         Plataforma gratuita para chatear, llamar y conectarte con
         {isMobile ? "" : <br />}
-
         cualquier persona en tiempo real
       </p>
       <div className={styles.buttonContainer}>
-        <button className={styles.registerBtn}>Crear cuenta</button>
-        <button className={styles.loginBtn}>Iniciar sesión</button>
+        <button
+          className={styles.registerBtn}
+          onClick={() => navigate("/auth/register")}
+        >
+          Crear cuenta
+        </button>
+        <button
+          className={styles.loginBtn}
+          onClick={() => navigate("/auth/login")}
+        >
+          Iniciar sesión
+        </button>
       </div>
     </div>
   );
