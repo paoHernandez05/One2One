@@ -28,7 +28,7 @@ function RegisterForm() {
         return;
       }
 
-      const res = await fetch("http://100.74.0.80:3000/api/auth/register", {
+      const res = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ function RegisterForm() {
       localStorage.setItem("userEmail", email);
 
       navigate("/auth/verify", { state: { email } });
-    } catch (error) {}
+    } catch (error) { }
   };
   const togglePassword = () => {
     setShowPassword(!showPassword);

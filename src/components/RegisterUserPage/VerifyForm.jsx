@@ -17,6 +17,9 @@ function VerifyForm() {
   const [email, setEmail] = useState(initialEmail);
   const [tempEmail, setTempEmail] = useState(initialEmail);
   const [editing, setEditing] = useState(false);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
 
   useEffect(() => {
     if (!state?.email) {
@@ -29,14 +32,86 @@ function VerifyForm() {
   const handleEdit = () => {
     setEditing(true);
   };
-  const handleSave = () => {
-    setEmail(tempEmail);
-    setEditing(false);
+  const handleSave = async () => {
+    // 1. Validaciones básicas antes de enviar
+    if (!tempEmail) {
+      alert("No se ingresó correo");
+      return;
+    }
+    if (initialEmail === tempEmail) {
+      alert("El correo ingresado es igual al anterior");
+      setEditing(false); // Solo cerramos la edición
+      return;
+    }
+    if (!emailRegex.test(tempEmail)) {
+      alert("Correo inválido.");
+      return;
+    }
+
+    // 2. Hacer la petición fetch
+    console.log(localStorage.getItem('verificationToken'))
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/updateEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('verificationToken')}`
+        },
+        body: JSON.stringify({ email: tempEmail }),
+        credentials: "include",
+      });
+
+      const response = await res.json();
+
+      console.log(response)
+      if (!response.success) {
+        alert("Correo no válido o error en el servidor");
+        return;
+      }
+
+      // 3. Si todo sale bien, actualizamos los estados
+      localStorage.setItem("userEmail", tempEmail);
+      setEmail(tempEmail);
+      setEditing(false);
+      navigate(".", {
+        replace: true,
+        state: { email: tempEmail }
+      });
+
+    } catch (error) {
+      console.error("Error al actualizar el correo:", error);
+    }
   };
   const handleCancel = () => {
     setTempEmail(email);
     setEditing(false);
   };
+
+  const sendCode = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/sendVerificationCode", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('verificationToken')}`
+        },
+        credentials: "include",
+      });
+
+      const response = await res.json();
+
+      console.log(response)
+      if (!response.success) {
+        alert("Fallo algo xd");
+        return;
+      }
+
+
+    } catch (error) {
+      console.error("Error al enviar codigo: ", error);
+
+    }
+  }
   return (
     <>
       <div className={styles.header}>
@@ -57,9 +132,8 @@ function VerifyForm() {
       <p className={styles.emailVerify}>Correo de verificación</p>
       <div className={styles.emailContainer}>
         <div
-          className={`${styles.inputWrapper} ${
-            editing ? styles.editing : styles.readMode
-          }`}
+          className={`${styles.inputWrapper} ${editing ? styles.editing : styles.readMode
+            }`}
         >
           <Mail size={18} className={styles.iconLeft} />
 
@@ -108,7 +182,7 @@ function VerifyForm() {
         ¿Te equivocaste de correo? Haz click en "Cambiar" para corregirlo antes
         de solicitar el código.{" "}
       </p>
-      <button className={styles.sendCode}>
+      <button onClick={sendCode} className={styles.sendCode}>
         <Send size={16} />
         Recibir código por email
       </button>

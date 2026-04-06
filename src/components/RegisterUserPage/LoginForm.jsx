@@ -28,7 +28,7 @@ function LoginForm() {
         return;
       }
 
-      const res = await fetch("http://100.74.0.80:3000/api/auth/login", {
+      const res = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
