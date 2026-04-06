@@ -5,7 +5,7 @@ import {
   Mail,
   Send,
   ShieldCheck,
-  SendToBack,
+  ArrowLeft,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -114,6 +114,8 @@ function VerifyForm() {
   }
   return (
     <>
+      <p className={styles.backContent} onClick={() => navigate("/auth/login")}>
+        <ArrowLeft size={18} />Volver</p>
       <div className={styles.header}>
         <div className={styles.iconBox}>
           <ShieldCheck size={22} />
@@ -124,7 +126,6 @@ function VerifyForm() {
           <span>Confirma tu identidad por correo</span>
         </div>
       </div>
-
       <p className={styles.description}>
         Enviaremos un código de 6 dígitos a tu correo electrónico para verificar
         tu identidad.
@@ -189,7 +190,6 @@ function VerifyForm() {
       <div>
         <p>Ingresa el código de 6 dígitos</p>
       </div>
-      <p onClick={() => navigate("/auth/login")}>Volver al login</p>
     </>
   );
 }

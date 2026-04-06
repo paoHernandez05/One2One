@@ -4,6 +4,21 @@
   gap: 14px;
 }
 
+.backContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+}
+
+.backContent:hover {
+  color: var(--title-color);
+}
+
 .iconBox {
   width: 48px;
   height: 48px;
@@ -13,8 +28,10 @@
   align-items: center;
   justify-content: center;
 
-  background-color: #e6f4f1; /* verde muy suave */
-  color: #2bb3a3; /* color del icono */
+  background-color: #e6f4f1;
+  /* verde muy suave */
+  color: #2bb3a3;
+  /* color del icono */
 }
 
 .text {
@@ -129,6 +146,7 @@
 .readMode {
   background: transparent;
 }
+
 .editing {
   background: white;
   border: 1px solid #14b8a6;
@@ -138,7 +156,8 @@
   font-size: 14px;
   color: #14b8a6;
   cursor: pointer;
-  white-space: nowrap; /* evita que se rompa línea */
+  white-space: nowrap;
+  /* evita que se rompa línea */
 }
 
 .emailMessage {

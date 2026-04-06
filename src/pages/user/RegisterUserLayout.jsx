@@ -6,6 +6,8 @@ import RegisterForm from "../../components/RegisterUserPage/RegisterForm";
 import VerifyForm from "../../components/RegisterUserPage/VerifyForm";
 import { Outlet } from "react-router-dom";
 import { useIsMobile } from "../../hooks/isMobile";
+import BrandHeader from "../../components/RegisterUserPage/BrandHeader";
+
 
 function RegisterUserLayout() {
   const isMobile = useIsMobile(1060);
@@ -33,6 +35,8 @@ function RegisterUserLayout() {
             <LeftPanel />
         }
         <div className={styles.rightView}>
+          {isMobile ? <BrandHeader /> : ""}
+
           <Outlet />
         </div>
       </div>
