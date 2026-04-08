@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.nameRow {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--title-color);
+  margin: 0;
+}
+
+.status {
+  font-size: 13px;
+  font-weight: 500;
+  color: gray;
+}

@@ -7,6 +7,7 @@ import LoginForm from "./components/RegisterUserPage/LoginForm";
 import RegisterForm from "./components/RegisterUserPage/RegisterForm";
 import VerifyForm from "./components/RegisterUserPage/VerifyForm";
 import AppPage from "./pages/user/AppPage";
+import ChatPage from "./pages/user/ChatPage";
 import "./index.css";
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -20,12 +21,10 @@ const router = createBrowserRouter([
       { path: "verify", element: <VerifyForm /> },
     ],
   },
-  { path: "/test", element: <AppPage /> }
+  { path: "/test", element: <AppPage /> },
 
-  /*
-  { path: "/login", element: <LoginUserPage /> },
-  { path: "/verify", element: <VerifyUserPage /> },
   { path: "/chat", element: <ChatPage /> },
+  /*,
   { path: "/settings", element: <SettingsPage /> },
   { path: "/profile/:userid", element: <UserProfilePage /> },
   { path: "/call", element: <CallPage /> },
