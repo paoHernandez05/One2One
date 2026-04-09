@@ -1,8 +1,13 @@
 .sidebar {
-  width: 400px;
   border-right: 1px solid #e0e5eb;
+  width: 400px;
+  min-width: 280px;
+  max-width: 350px;
+
   display: flex;
   flex-direction: column;
+
+  height: 100vh;
 }
 
 .top {
@@ -15,6 +20,9 @@
 
 .bottom {
   padding: 0px 16px 0px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .newConvo {

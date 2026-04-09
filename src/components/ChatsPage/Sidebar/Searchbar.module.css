@@ -4,6 +4,8 @@
   font-weight: 450;
   font-size: 15px;
   background-color: transparent;
+  flex: 1;
+  min-width: 0;
 }
 
 .searchInput:focus {
@@ -11,6 +13,7 @@
 }
 
 .searchbar {
+  width: 100%;
   display: flex;
   cursor: text;
   flex-direction: row;

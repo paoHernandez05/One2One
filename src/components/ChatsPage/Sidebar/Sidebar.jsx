@@ -2,9 +2,11 @@ import styles from "./Sidebar.module.css";
 import UserHeader from "./UserHeader";
 import Searchbar from "./Searchbar";
 import ChatList from "./ChatList";
+import { useState } from "react";
+import NewConvoModal from "./NewConvoModal";
 import NewConvo from "./NewConvo";
 
-function Sidebar({ chats, selectedChat, setSelectedChat }) {
+function Sidebar({ chats, selectedChat, setSelectedChat, onOpenModal }) {
   const currentUser = {
     id: 1,
     username: "samantha_jones",
@@ -26,7 +28,7 @@ function Sidebar({ chats, selectedChat, setSelectedChat }) {
         />
       </div>
       <div className={styles.newConvo}>
-        <NewConvo />
+        <NewConvo onClick={onOpenModal} />
       </div>
     </div>
   );

@@ -1,7 +1,12 @@
 import styles from "./Searchbar.module.css";
 import { useRef } from "react";
 import { Search, User } from "lucide-react";
-function Searchbar() {
+
+function Searchbar({
+  placeholder = "Buscar conversación...",
+  value,
+  onChange,
+}) {
   const inputRef = useRef(null);
   const handleClick = () => {
     if (document.activeElement !== inputRef.current) {
@@ -14,7 +19,9 @@ function Searchbar() {
       <input
         type="text"
         ref={inputRef}
-        placeholder="Buscar conversación..."
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className={styles.searchInput}
       />
     </div>
