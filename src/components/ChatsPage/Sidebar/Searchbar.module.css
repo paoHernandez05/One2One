@@ -13,7 +13,6 @@
 }
 
 .searchbar {
-  width: 100%;
   display: flex;
   cursor: text;
   flex-direction: row;

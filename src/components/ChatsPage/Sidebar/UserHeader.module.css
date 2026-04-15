@@ -4,13 +4,18 @@
   gap: 12px;
 }
 
+.avatarContainer {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
 .avatar {
-  width: 45px;
-  height: 45px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  border: solid 1px white;
 }
-
 .userInfo {
   display: flex;
   flex-direction: column;
@@ -34,4 +39,9 @@
   font-size: 13px;
   font-weight: 500;
   color: gray;
+}
+
+.statusText {
+  font-size: 13px;
+  color: #6b7280;
 }

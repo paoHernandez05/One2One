@@ -1,6 +1,61 @@
-.container {
-  flex: 1;
+.chatWindow {
   display: flex;
   flex-direction: column;
-  color: blue;
+  height: 100%;
+  flex: 1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+
+  background-color: white;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.actions svg:hover {
+  color: #1dafa1;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.myMessage {
+  align-self: flex-end;
+  background: var(--text-gradient);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  min-width: 400px;
+  font-weight: 450;
+  font-size: 14px;
+}
+
+.otherMessage {
+  align-self: flex-start;
+  background: #ffffff;
+  border: solid 1px #e7ebef;
+  font-weight: 450;
+  color: var(--title-color);
+  font-size: 14px;
+  min-width: 400px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
