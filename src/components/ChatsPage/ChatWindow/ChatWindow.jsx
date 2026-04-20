@@ -1,5 +1,6 @@
 import styles from "./ChatWindow.module.css";
 import UserHeader from "../Sidebar/UserHeader";
+import Message from "./Message";
 import { Phone, MoreVertical } from "lucide-react";
 function ChatWindow({ chat }) {
   if (!chat) {
@@ -17,15 +18,7 @@ function ChatWindow({ chat }) {
 
       <div className={styles.messages}>
         {chat.messages?.map((msg) => (
-          <div
-            key={msg.id}
-            className={
-              msg.sender === "me" ? styles.myMessage : styles.otherMessage
-            }
-          >
-            <p>{msg.text}</p>
-            <span>{msg.time}</span>
-          </div>
+          <Message key={msg.id} msg={msg} />
         ))}
       </div>
     </div>

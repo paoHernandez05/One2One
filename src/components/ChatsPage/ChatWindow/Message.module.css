@@ -1,0 +1,40 @@
+.message {
+  display: flex;
+  margin: 6px 0;
+}
+
+.me {
+  justify-content: flex-end;
+}
+
+.other {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 60%;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.me .bubble {
+  background-color: #dcf8c6;
+}
+
+.time {
+  font-size: 11px;
+  display: block;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.video {
+  max-width: 100%;
+  border-radius: 8px;
+}
