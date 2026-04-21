@@ -14,12 +14,18 @@
 .bubble {
   max-width: 60%;
   padding: 10px;
-  border-radius: 12px;
-  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+  background: white;
+  border: 1px solid #e3e8ed;
+  color: var(--title-color);
 }
 
 .me .bubble {
-  background-color: #dcf8c6;
+  background: var(--bubble-gradient);
+  color: white;
+  border-radius: 18px;
 }
 
 .time {
@@ -27,6 +33,11 @@
   display: block;
   text-align: right;
   margin-top: 4px;
+  color: var(--secondary-color);
+}
+
+.me .time {
+  color: #bee5ef;
 }
 
 .image {

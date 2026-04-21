@@ -1,6 +1,7 @@
 :root {
   --primary-gradient: linear-gradient(0.25turn, #387ad5, #21a7a9);
   --text-gradient: linear-gradient(to right, #21a7a9, #387ad5);
+  --bubble-gradient: linear-gradient(to right, #25b0a6, #25a6cb);
   --primary-font: "Plus Jakarta Sans";
   --title-color: #1f2937;
   --secondary-color: #65758b;

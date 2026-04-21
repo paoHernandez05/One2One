@@ -8,11 +8,11 @@ function Message({ msg }) {
       case "text":
         return <p>{msg.text}</p>;
       case "image":
-        return <img src={msg.url} className={styles.image} />;
+        return <img src={msg.image} className={styles.image} />;
       case "audio":
-        return <audio controls src={msg.url} />;
+        return <audio controls src={msg.audio} />;
       case "video":
-        return <video controls src={msg.url} className={styles.video} />;
+        return <video controls src={msg.video} className={styles.video} />;
       default:
         return <p>Tipo no soportado</p>;
     }

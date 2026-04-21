@@ -1,10 +1,12 @@
 import styles from "./ChatWindow.module.css";
 import UserHeader from "../Sidebar/UserHeader";
+import DefaultChatWindow from "./DefaultChatWindow";
+import MessageBox from "./MessageBox";
 import Message from "./Message";
 import { Phone, MoreVertical } from "lucide-react";
 function ChatWindow({ chat }) {
   if (!chat) {
-    return <p>Selecciona un chat</p>;
+    return <DefaultChatWindow />;
   }
   return (
     <div className={styles.chatWindow}>
@@ -20,6 +22,9 @@ function ChatWindow({ chat }) {
         {chat.messages?.map((msg) => (
           <Message key={msg.id} msg={msg} />
         ))}
+      </div>
+      <div className={styles.messageBox}>
+        <MessageBox />
       </div>
     </div>
   );

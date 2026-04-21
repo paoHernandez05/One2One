@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  position: sticky;
+  bottom: 0;
+  border-top: 1px solid #e0e5eb;
+
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.container button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.input {
+  padding: 10px;
+  background-color: #eff2f5;
+  border: none;
+  flex: 1;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 15px;
+  color: #65758b;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.sendButton {
+  background: var(--primary-gradient);
+}
