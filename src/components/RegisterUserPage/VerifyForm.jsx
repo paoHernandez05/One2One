@@ -7,7 +7,7 @@ import {
   ShieldCheck,
   ArrowLeft,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./VerifyForm.module.css";
 function VerifyForm() {
@@ -19,7 +19,26 @@ function VerifyForm() {
   const [editing, setEditing] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  const [vals, setVals] = useState(new Array(6).fill(""));
+  const inputsRef = useRef([]);
+  const estaCompleto = vals.every(v => v.length === 1);
 
+  const manejarCambio = (e, indice) => {
+    let valor = e.target.value;
+    if (valor.length > 1) {
+      valor = valor.slice(-1);
+    }
+
+    if (!/^\d*$/.test(valor)) return;
+
+    const nuevaCopia = [...vals];
+    nuevaCopia[indice] = valor;
+    setVals(nuevaCopia);
+
+    if (valor !== "" && indice < 5) {
+      inputsRef.current[indice + 1].focus();
+    }
+  };
 
   useEffect(() => {
     if (!state?.email) {
@@ -33,14 +52,14 @@ function VerifyForm() {
     setEditing(true);
   };
   const handleSave = async () => {
-    // 1. Validaciones básicas antes de enviar
+
     if (!tempEmail) {
       alert("No se ingresó correo");
       return;
     }
     if (initialEmail === tempEmail) {
       alert("El correo ingresado es igual al anterior");
-      setEditing(false); // Solo cerramos la edición
+      setEditing(false);
       return;
     }
     if (!emailRegex.test(tempEmail)) {
@@ -48,7 +67,6 @@ function VerifyForm() {
       return;
     }
 
-    // 2. Hacer la petición fetch
     console.log(localStorage.getItem('verificationToken'))
     try {
       const res = await fetch("http://localhost:3000/api/auth/updateEmail", {
@@ -69,7 +87,7 @@ function VerifyForm() {
         return;
       }
 
-      // 3. Si todo sale bien, actualizamos los estados
+
       localStorage.setItem("userEmail", tempEmail);
       setEmail(tempEmail);
       setEditing(false);
@@ -112,6 +130,50 @@ function VerifyForm() {
 
     }
   }
+
+
+  const verifyCode = async (e) => {
+    e.preventDefault();
+    try {
+
+      if (!estaCompleto) {
+        alert("No se envio el codigo de manera correcta");
+        return;
+      }
+      console.log(localStorage.getItem('verificationToken'))
+
+      const res = await fetch("http://localhost:3000/api/auth/verifyCode", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('verificationToken')}`
+
+        },
+        body: JSON.stringify({ code: vals.join('') }),
+        credentials: "include",
+      });
+
+
+
+      const response = await res.json();
+      console.log(response)
+
+      if (!response.success) {
+        console.log("Credenciales Invalidas");
+        return;
+      }
+      console.log("Verificacion exitosa");
+      navigate("/test");
+    } catch (error) {
+
+    }
+
+
+
+
+
+  };
+
   return (
     <>
       <p className={styles.backContent} onClick={() => navigate("/auth/login")}>
@@ -190,6 +252,34 @@ function VerifyForm() {
       <div>
         <p>Ingresa el código de 6 dígitos</p>
       </div>
+      <form onSubmit={verifyCode}>
+        <div className={styles.inputContainer}>
+          {vals.map((num, i) => (
+            <>
+              <input
+                key={i}
+                type="text"
+                inputMode="numeric"
+                value={num}
+                ref={(el) => (inputsRef.current[i] = el)}
+                onChange={(e) => manejarCambio(e, i)}
+                className={`${styles.inputCode} 
+                ${i === 0 || i === 3 ? styles.start : ""}
+                ${i === 2 || i === 5 ? styles.end : ""}`}
+              />
+              {i === 2 ? <div className={styles.slash}>-</div> : ""}
+            </>
+
+          ))}
+        </div>
+        <button
+          type="submit"
+          disabled={!estaCompleto}
+          className={`${styles.verifyCode} ${estaCompleto ? styles.activo : styles.vacio}`}>
+          <ShieldCheck size={16} />
+          Verificar Código
+        </button>
+      </form>
     </>
   );
 }

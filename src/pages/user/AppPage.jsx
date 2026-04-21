@@ -1,17 +1,19 @@
+import React, { useState } from 'react';
+
 function LandingPage() {
-  const handleSubmit = async (e) => {
+  const me = async (e) => {
     e.preventDefault();
     try {
-
-
-      const res = await fetch("http://localhost:3000/api/app/test", {
-        method: "GET",
+      const res = await fetch("http://localhost:3000/api/user/search", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          query: 'zauron'
+        }),
         credentials: "include",
       });
-
       const response = await res.json();
       console.log(response);
     } catch (error) {
@@ -19,12 +21,98 @@ function LandingPage() {
     }
   };
 
+  const newMe = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:3000/api/user/newInfo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          mood: "Me siento biennnn",
+          age: 19,
+          password: "radiohead",
+        }),
+      });
+      const response = await res.json();
+      console.log(response);
+    } catch (error) {
+      console.log("Nop, error");
+    }
+  };
+
+
+
+
+
+
+
+  const AvatarUpload = () => {
+    const [file, setFile] = useState(null);
+    const [preview, setPreview] = useState(null);
+
+    const handleFileChange = (e) => {
+      const selectedFile = e.target.files[0];
+      if (selectedFile) {
+        setFile(selectedFile);
+        // Esto es solo para que veas la foto antes de mandarla
+        setPreview(URL.createObjectURL(selectedFile));
+      }
+    };
+
+    const handleSubmit = async () => {
+      if (!file) return alert("Selecciona una imagen primero");
+
+      // AQUÍ ESTÁ EL TRUCO: Convertir a FormData
+      const formData = new FormData();
+      formData.append('avatar', file); // 'avatar' es el nombre que buscará el back
+      console.log(formData);
+
+      try {
+        const res = await fetch("http://localhost:3000/api/user/newAvatar", {
+          method: 'POST',
+          body: formData,
+          credentials: "include",
+
+        });
+
+        const response = await res.json();
+        if (response.success) console.log(response.data.avatar);
+      } catch (err) {
+        console.error("Error subiendo foto", err);
+      }
+    };
+
+    return (
+      <div style={{ textAlign: 'center', padding: '20px' }}>
+        <h3>Cambiar Avatar</h3>
+
+        {preview && <img src={preview} alt="Vista previa" style={{ width: '100px', borderRadius: '50%' }} />}
+
+        <br />
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <br /><br />
+
+        <button onClick={handleSubmit} style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px' }}>
+          Subir al Servidor
+        </button>
+      </div>
+    );
+  };
+
+
   return (
     <>
       <div>Hola esto es test c:</div>
-      <form onSubmit={handleSubmit}>
-        <button type="submit"></button>
+      <form onSubmit={me}>
+        <button type="submit">TESTTTTTTTT</button>
       </form>
+      <form onSubmit={newMe}>
+        <button type="submit">Nueva info</button>
+      </form>
+      <AvatarUpload />
     </>
   );
 }
