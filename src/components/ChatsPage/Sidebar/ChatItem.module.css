@@ -5,6 +5,7 @@
   align-items: center;
   padding: 12px 0px;
   transition-duration: 0.5s;
+  cursor: pointer;
 }
 .chatItem:hover {
   background-color: #f3f6f8;

@@ -2,10 +2,8 @@ import styles from "./ShareFilesModal.module.css";
 import { FileImage, Video } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-function ShareFilesModal({ onFileSelect }) {
+function ShareFilesModal({ onFileSelect, onClose }) {
   const fileInputRef = useRef();
-  /*   const [preview, setPreview] = useEffect(null);
-   */
   const handleOpenFiles = (type) => {
     if (type === "image") {
       fileInputRef.current.accept = "image/*";
@@ -19,7 +17,9 @@ function ShareFilesModal({ onFileSelect }) {
     const file = e.target.files[0];
     if (file) {
       onFileSelect(file);
+      onClose();
     }
+    e.target.value = null;
   };
 
   return (
@@ -28,15 +28,25 @@ function ShareFilesModal({ onFileSelect }) {
         type="file"
         ref={fileInputRef}
         style={{ display: "none" }}
-        accept="image/*"
+        accept="image/*, video/*"
         onChange={handleFileChange}
       />
 
-      <div className={styles.item} onClick={() => handleOpenFiles("image")}>
+      <div
+        className={styles.item}
+        onClick={() => {
+          handleOpenFiles("image");
+        }}
+      >
         <FileImage size={15} color="#2ab3a6" />
         Imagen
       </div>
-      <div className={styles.item} onClick={() => handleOpenFiles("video")}>
+      <div
+        className={styles.item}
+        onClick={() => {
+          handleOpenFiles("video");
+        }}
+      >
         <Video size={15} color="#2ab3a6" />
         Video
       </div>
