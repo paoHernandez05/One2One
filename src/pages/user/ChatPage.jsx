@@ -237,6 +237,39 @@ function ChatPage() {
       ],
       unreadCount: 0,
     },
+    {
+      id: "chat_9",
+      user: {
+        username: "paoo_hdez",
+        avatar: "https://i.pravatar.cc/150?img=33",
+        isOnline: true,
+      },
+      messages: [
+        {
+          id: 1,
+          type: "deleted",
+          text: "React 19 está increíble.",
+          sender: "other",
+          time: "17:22",
+        },
+        {
+          id: 2,
+          type: "reported",
+          text: "Siii, el compilador ayuda mucho.",
+          sender: "me",
+          time: "17:25",
+        },
+        {
+          id: 3,
+          type: "image",
+          image:
+            "https://i.pinimg.com/1200x/a0/89/77/a089773f7a787dac37a3560f80b1d19f.jpg",
+          sender: "other",
+          time: "17:28",
+        },
+      ],
+      unreadCount: 0,
+    },
   ];
   return (
     <div className={styles.container}>

@@ -13,7 +13,7 @@
 
 .bubble {
   max-width: 60%;
-  padding: 10px;
+  padding: 5px 15px;
   border-radius: 18px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   font-size: 14px;
@@ -32,7 +32,8 @@
   font-size: 11px;
   display: block;
   text-align: right;
-  margin-top: 4px;
+  margin-top: -5px;
+  margin-bottom: 5px;
   color: var(--secondary-color);
 }
 
@@ -48,4 +49,51 @@
 .video {
   max-width: 100%;
   border-radius: 8px;
+}
+
+.systemMessage {
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 8px 0;
+  display: inline-flex;
+}
+
+.systemBubble {
+  background: transparent; /* 🔥 elimina fondo verde/blanco */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.deletedMsg,
+.reportedMsg {
+  display: inline-flex;
+  font-style: italic;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.deletedMsg {
+  background: rgba(238, 241, 245, 0.3);
+
+  color: #6b7a90;
+  border: 1px solid #e0e5eb;
+}
+
+.reportedMsg {
+  background: rgba(253, 234, 234, 0.3);
+
+  color: #d93025;
+  border: 1px solid #f5c2c0;
+}
+
+.systemMessage .time {
+  font-size: 11px;
+  color: #9aa5b1;
+  margin-top: 3px;
+  margin-left: 8px;
 }

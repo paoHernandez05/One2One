@@ -21,7 +21,7 @@
 .input {
   padding: 10px;
   background-color: #eff2f5;
-  border: none;
+  border: 2px solid transparent;
   flex: 1;
   border-radius: 10px;
   padding: 14px;
@@ -29,6 +29,10 @@
   color: #65758b;
 }
 
+.input:focus {
+  border: solid 2px #1dafa1;
+  outline: none;
+}
 .buttons {
   display: flex;
   flex-direction: row;
@@ -37,4 +41,53 @@
 
 .sendButton {
   background: var(--primary-gradient);
+  transition: 0.3s ease;
+}
+
+.sendButton:hover {
+  opacity: 0.8;
+}
+
+.audio {
+  transition: 0.5s;
+}
+
+.audio:hover {
+  background-color: #eff2f5;
+}
+
+.shareButton {
+  transition: 0.5s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.shareButton:hover {
+  background-color: #eff2f5;
+}
+
+.previewContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f5f7fa;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.previewImage,
+.previewVideo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.previewInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 14px;
 }
