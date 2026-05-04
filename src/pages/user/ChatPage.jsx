@@ -2,6 +2,8 @@ import Sidebar from "../../components/ChatsPage/Sidebar/Sidebar";
 import ChatWindow from "../../components/ChatsPage/ChatWindow/ChatWindow";
 import styles from "../../components/ChatsPage/ChatsPage.module.css";
 import NewConvoModal from "../../components/ChatsPage/Sidebar/NewConvoModal";
+import { Outlet } from "react-router-dom";
+
 import { useState } from "react";
 
 function ChatPage() {

@@ -8,6 +8,7 @@ import RegisterForm from "./components/RegisterUserPage/RegisterForm";
 import VerifyForm from "./components/RegisterUserPage/VerifyForm";
 import AppPage from "./pages/user/AppPage";
 import ChatPage from "./pages/user/ChatPage";
+import SettingsPage from "./pages/user/SettingsPage";
 import "./index.css";
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -23,9 +24,24 @@ const router = createBrowserRouter([
   },
   { path: "/test", element: <AppPage /> },
 
-  { path: "/chat", element: <ChatPage /> },
+  {
+    path: "/chat",
+    children: [
+      { index: true, element: <ChatPage /> },
+      {
+        path: "settings",
+        element: <SettingsPage /> /*
+        children: [
+          { index: true, element: <ProfilePage /> },
+          { path: "account", element: <AccountPage /> },
+          { path: "privacy", element: <PrivacyPage /> },
+          { path: "blocked", element: <Blocked /> },
+        ],*/,
+      },
+    ],
+  },
+
   /*,
-  { path: "/settings", element: <SettingsPage /> },
   { path: "/profile/:userid", element: <UserProfilePage /> },
   { path: "/call", element: <CallPage /> },
   { path: "/admin", element: <AdminMainPage /> },
