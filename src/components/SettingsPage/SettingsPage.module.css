@@ -2,15 +2,25 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .body {
   flex: 1;
   display: flex;
+  overflow: hidden;
 }
 
 .content {
   flex: 1;
   padding: 30px;
   overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.content > * {
+  width: 100%;
+  max-width: 800px;
 }

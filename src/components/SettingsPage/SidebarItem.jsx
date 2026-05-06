@@ -1,14 +1,18 @@
 import styles from "./SidebarItem.module.css";
+import { NavLink } from "react-router-dom";
 
-function SidebarItem({ icon, label, onClick, active }) {
+function SidebarItem({ icon, label, to }) {
   return (
-    <button
-      className={`${styles.item} ${active ? styles.active : ""}`}
-      onClick={onClick}
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `${styles.item} ${isActive ? styles.active : ""}`
+      }
+      end={to === "/chat/settings"}
     >
       <span className={styles.icon}>{icon}</span>
       <span>{label}</span>
-    </button>
+    </NavLink>
   );
 }
 

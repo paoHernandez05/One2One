@@ -9,6 +9,10 @@ import VerifyForm from "./components/RegisterUserPage/VerifyForm";
 import AppPage from "./pages/user/AppPage";
 import ChatPage from "./pages/user/ChatPage";
 import SettingsPage from "./pages/user/SettingsPage";
+import ProfilePage from "./components/SettingsPage/ProfilePage";
+import AccountPage from "./components/SettingsPage/AccountPage";
+import BlockedPage from "./components/SettingsPage/BlockedPage";
+import { Toaster } from "react-hot-toast";
 import "./index.css";
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -30,13 +34,13 @@ const router = createBrowserRouter([
       { index: true, element: <ChatPage /> },
       {
         path: "settings",
-        element: <SettingsPage /> /*
+        element: <SettingsPage />,
         children: [
           { index: true, element: <ProfilePage /> },
           { path: "account", element: <AccountPage /> },
-          { path: "privacy", element: <PrivacyPage /> },
-          { path: "blocked", element: <Blocked /> },
-        ],*/,
+
+          { path: "blocked", element: <BlockedPage /> },
+        ],
       },
     ],
   },
@@ -55,6 +59,22 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "white",
+            border: "1px solid #e0e5eb",
+            color: "#1f2937",
+            fontSize: "15px",
+            fontWeight: "550",
+            borderRadius: "10px",
+          },
+        }}
+      />
+      <RouterProvider router={router} />
+    </>
   </StrictMode>
 );

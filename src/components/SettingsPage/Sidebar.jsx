@@ -1,12 +1,8 @@
 import SidebarItem from "./SidebarItem";
 import styles from "./Sidebar.module.css";
 import { User, Settings, Shield, Ban } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
 
 function Sidebar() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const items = [
     {
       label: "Perfil",
@@ -16,17 +12,12 @@ function Sidebar() {
     {
       label: "Cuenta",
       icon: <Settings size={15} />,
-      path: "/chat/settings/profile",
-    },
-    {
-      label: "Privacidad",
-      icon: <Shield size={15} />,
-      path: "/chat/settings/privacy",
+      path: "/chat/settings/account",
     },
     {
       label: "Bloqueos",
       icon: <Ban size={15} />,
-      path: "/chat/profile/blocked",
+      path: "/chat/settings/blocked",
     },
   ];
 
@@ -37,8 +28,7 @@ function Sidebar() {
           key={item.label}
           label={item.label}
           icon={item.icon}
-          onClick={() => navigate(item.path)}
-          active={location.pathname === item.path}
+          to={item.path}
         />
       ))}
     </div>

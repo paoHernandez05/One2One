@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  flex-shrink: 0;
   align-items: center;
   gap: 15px;
   border-bottom: 1px solid #e4e8ed;
