@@ -1,6 +1,6 @@
 import SidebarItem from "./SidebarItem";
 import styles from "./Sidebar.module.css";
-import { User, Settings, Shield, Ban } from "lucide-react";
+import { User, Settings, Ban, HandCoins } from "lucide-react";
 
 function Sidebar() {
   const items = [
@@ -18,6 +18,11 @@ function Sidebar() {
       label: "Bloqueos",
       icon: <Ban size={15} />,
       path: "/chat/settings/blocked",
+    },
+    {
+      label: "Pagos",
+      icon: <HandCoins size={15} />,
+      path: "/chat/settings/payment",
     },
   ];
 

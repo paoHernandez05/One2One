@@ -18,7 +18,7 @@ function ChangePasswordModal({ onClose }) {
       return;
     }
 
-    if (newPassword.length < 6 && confirmPassword.length < 6) {
+    if (newPassword.length < 6 || confirmPassword.length < 6) {
       toast.error("La contraseña nueva debe tener al menos 6 caracteres.");
       return;
     }
@@ -28,7 +28,7 @@ function ChangePasswordModal({ onClose }) {
       return;
     }
 
-    toast.success("Contraseña actualizada correctamente");
+    toast.success("Contraseña actualizada correctamente.");
 
     onClose();
   }
@@ -40,11 +40,7 @@ function ChangePasswordModal({ onClose }) {
           <span>Ingresa tu contraseña actual y la nueva contraseña</span>
         </div>
 
-        <form
-          action="submit"
-          className={styles.changePassword}
-          onSubmit={handleSubmit}
-        >
+        <form className={styles.changePassword} onSubmit={handleSubmit}>
           <label>Contraseña actual</label>
           <div className={styles.inputWrapper}>
             <input

@@ -12,6 +12,7 @@ import SettingsPage from "./pages/user/SettingsPage";
 import ProfilePage from "./components/SettingsPage/ProfilePage";
 import AccountPage from "./components/SettingsPage/AccountPage";
 import BlockedPage from "./components/SettingsPage/BlockedPage";
+import PaymentPage from "./components/SettingsPage/PaymentPage";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
 const router = createBrowserRouter([
@@ -38,8 +39,8 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <ProfilePage /> },
           { path: "account", element: <AccountPage /> },
-
           { path: "blocked", element: <BlockedPage /> },
+          { path: "payment", element: <PaymentPage /> },
         ],
       },
     ],
