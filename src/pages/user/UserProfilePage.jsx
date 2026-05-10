@@ -1,6 +1,7 @@
 import styles from "../../components/UserPage/UserProfilePage.module.css";
 import StatusDot from "../../components/ChatsPage/StatusDot";
 import BlockUserModal from "../../components/UserPage/BlockUserModal";
+import ReportUserModal from "../../components/UserPage/ReportUserModal";
 import { useState } from "react";
 import {
   ArrowLeft,
@@ -16,6 +17,7 @@ import {
 
 function UserProfile({ user, onClose }) {
   const [openModal, setOpenModal] = useState(false);
+  const [openBlockedModal, setOpenBlockedModal] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
 
   function handleBlockUser() {
@@ -155,10 +157,7 @@ function UserProfile({ user, onClose }) {
                 <Ban size={16} />
                 Bloquear usuario
               </button>
-              <button>
-                <Flag size={16} />
-                Reportar usuario
-              </button>
+
               {openModal && (
                 <BlockUserModal
                   user={user}
