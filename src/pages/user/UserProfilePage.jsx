@@ -1,7 +1,6 @@
 import styles from "../../components/UserPage/UserProfilePage.module.css";
 import StatusDot from "../../components/ChatsPage/StatusDot";
 import BlockUserModal from "../../components/UserPage/BlockUserModal";
-import ReportUserModal from "../../components/UserPage/ReportUserModal";
 import { useState } from "react";
 import {
   ArrowLeft,
@@ -76,10 +75,6 @@ function UserProfile({ user, onClose }) {
                 >
                   <ShieldAlert size={16} />
                   Desbloquear usuario
-                </button>
-                <button className={styles.reportButton}>
-                  <Flag size={16} />
-                  Reportar usuario
                 </button>
               </div>
             </div>
