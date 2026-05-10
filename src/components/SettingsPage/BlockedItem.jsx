@@ -4,7 +4,7 @@ function BlockedItem({ icon, username, email, onUnblock }) {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <img src={icon} alt="" />
+        <img src={icon} alt="" className={styles.image} />
         <div className={styles.userInfo}>
           <span className={styles.usrname}>{username}</span>
           <span className={styles.mail}>{email}</span>

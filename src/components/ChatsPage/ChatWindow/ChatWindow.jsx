@@ -4,14 +4,17 @@ import DefaultChatWindow from "./DefaultChatWindow";
 import MessageBox from "./MessageBox";
 import Message from "./Message";
 import { Phone, MoreVertical } from "lucide-react";
-function ChatWindow({ chat }) {
-  if (!chat) {
+function ChatWindow({ selectedChat, onOpenProfile, setShowProfile }) {
+  if (!selectedChat) {
     return <DefaultChatWindow />;
   }
   return (
     <div className={styles.chatWindow}>
       <div className={styles.header}>
-        <UserHeader user={chat.user} />
+        <UserHeader
+          user={selectedChat.user}
+          onClick={() => setShowProfile(true)}
+        />
         <div className={styles.actions}>
           <Phone size={20} />
           <MoreVertical size={20} />
@@ -19,7 +22,7 @@ function ChatWindow({ chat }) {
       </div>
 
       <div className={styles.messages}>
-        {chat.messages?.map((msg) => (
+        {selectedChat.messages?.map((msg) => (
           <Message key={msg.id} msg={msg} />
         ))}
       </div>

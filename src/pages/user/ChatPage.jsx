@@ -2,18 +2,24 @@ import Sidebar from "../../components/ChatsPage/Sidebar/Sidebar";
 import ChatWindow from "../../components/ChatsPage/ChatWindow/ChatWindow";
 import styles from "../../components/ChatsPage/ChatsPage.module.css";
 import NewConvoModal from "../../components/ChatsPage/Sidebar/NewConvoModal";
+import UserProfile from "./UserProfilePage";
 import { Outlet } from "react-router-dom";
 
 import { useState } from "react";
 
 function ChatPage() {
   const [selectedChat, setSelectedChat] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const chats = [
     {
       id: "chat_1",
       user: {
         username: "ana_garcia",
+        number: "+34 611 111 111",
+        age: "25 años",
+        joinedDate: "10/2/2024",
+        email: "ana@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=5",
         isOnline: true,
       },
@@ -42,11 +48,14 @@ function ChatPage() {
       ],
       unreadCount: 3,
     },
-
     {
       id: "chat_2",
       user: {
         username: "marcos_rodriguez",
+        number: "+34 622 222 222",
+        age: "28 años",
+        joinedDate: "15/1/2024",
+        email: "marcos@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=11",
         isOnline: false,
       },
@@ -75,11 +84,14 @@ function ChatPage() {
       ],
       unreadCount: 0,
     },
-
     {
       id: "chat_3",
       user: {
         username: "sofia_vargas",
+        number: "+34 633 333 333",
+        age: "22 años",
+        joinedDate: "05/3/2024",
+        email: "sofia@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=26",
         isOnline: true,
       },
@@ -94,11 +106,14 @@ function ChatPage() {
       ],
       unreadCount: 1,
     },
-
     {
       id: "chat_4",
       user: {
         username: "david_techtalk",
+        number: "+34 644 444 444",
+        age: "30 años",
+        joinedDate: "20/12/2023",
+        email: "david@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=12",
         isOnline: true,
       },
@@ -120,11 +135,14 @@ function ChatPage() {
       ],
       unreadCount: 0,
     },
-
     {
       id: "chat_5",
       user: {
         username: "lucia_perez",
+        number: "+34 655 555 555",
+        age: "24 años",
+        joinedDate: "12/02/2024",
+        email: "lucia@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=32",
         isOnline: false,
       },
@@ -153,11 +171,14 @@ function ChatPage() {
       ],
       unreadCount: 0,
     },
-
     {
       id: "chat_6",
       user: {
         username: "equipo_redes",
+        number: "+34 600 000 000",
+        age: "N/A",
+        joinedDate: "01/01/2024",
+        email: "equipo@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=15",
         isOnline: true,
       },
@@ -186,11 +207,14 @@ function ChatPage() {
       ],
       unreadCount: 2,
     },
-
     {
       id: "chat_7",
       user: {
         username: "carla_mendez",
+        number: "+34 677 777 777",
+        age: "26 años",
+        joinedDate: "28/02/2024",
+        email: "carla@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=44",
         isOnline: false,
       },
@@ -205,11 +229,14 @@ function ChatPage() {
       ],
       unreadCount: 1,
     },
-
     {
       id: "chat_8",
       user: {
         username: "javier_dev",
+        number: "+34 688 888 888",
+        age: "29 años",
+        joinedDate: "15/03/2024",
+        email: "javier@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=33",
         isOnline: true,
       },
@@ -243,6 +270,10 @@ function ChatPage() {
       id: "chat_9",
       user: {
         username: "paoo_hdez",
+        number: "+34 699 999 999",
+        age: "21 años",
+        joinedDate: "01/04/2024",
+        email: "pao@gmail.com",
         avatar: "https://i.pravatar.cc/150?img=33",
         isOnline: true,
       },
@@ -273,7 +304,12 @@ function ChatPage() {
       unreadCount: 0,
     },
   ];
-  return (
+  return showProfile ? (
+    <UserProfile
+      user={selectedChat.user}
+      onClose={() => setShowProfile(false)}
+    />
+  ) : (
     <div className={styles.container}>
       <Sidebar
         chats={chats}
@@ -281,7 +317,8 @@ function ChatPage() {
         setSelectedChat={setSelectedChat}
         onOpenModal={() => setIsModalOpen(true)}
       />
-      <ChatWindow chat={selectedChat} />
+      <ChatWindow selectedChat={selectedChat} setShowProfile={setShowProfile} />
+
       {isModalOpen && <NewConvoModal onClose={() => setIsModalOpen(false)} />}
     </div>
   );

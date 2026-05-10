@@ -1,8 +1,8 @@
 import styles from "./UserHeader.module.css";
 import StatusDot from "../StatusDot";
-function UserHeader({ user }) {
+function UserHeader({ user, onClick }) {
   return (
-    <div className={styles.header}>
+    <div className={styles.header} onClick={onClick}>
       <div className={styles.avatarContainer}>
         <img className={styles.avatar} src={user.avatar} alt="" />
         <StatusDot isOnline={user.isOnline} />
