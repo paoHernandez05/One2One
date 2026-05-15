@@ -9,6 +9,7 @@
   font-size: 18px;
   font-weight: 600;
   padding: 20px;
+  z-index: 1;
 }
 
 .container button {

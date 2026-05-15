@@ -13,6 +13,13 @@ import ProfilePage from "./components/SettingsPage/ProfilePage";
 import AccountPage from "./components/SettingsPage/AccountPage";
 import BlockedPage from "./components/SettingsPage/BlockedPage";
 import PaymentPage from "./components/SettingsPage/PaymentPage";
+import AdminMainPage from "./pages/admin/AdminMainPage";
+import AdminDashboardPage from "./components/AdminPage/AdminDashboardPage";
+import AdminServerPage from "./components/AdminPage/AdminServer/AdminServerPage";
+import AdminProviderPage from "./components/AdminPage/AdminProvider/AdminProviderPage";
+import AdminCallLogPage from "./components/AdminPage/AdminCallLog/AdminCallLogPage";
+import AdminReportsPage from "./components/AdminPage/AdminReports/AdminReportsPage";
+import AdminUsersPage from "./components/AdminPage/AdminUsers/AdminUsersPage";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
 const router = createBrowserRouter([
@@ -46,6 +53,20 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: "/admin",
+    element: <AdminMainPage />,
+    children: [
+      { index: true, element: <AdminDashboardPage /> },
+      { path: "server", element: <AdminServerPage /> },
+      { path: "provider", element: <AdminProviderPage /> },
+      { path: "logs", element: <AdminCallLogPage /> },
+
+      { path: "reports", element: <AdminReportsPage /> },
+      { path: "users", element: <AdminUsersPage /> },
+    ],
+  },
+
   /*,
   { path: "/profile/:userid", element: <UserProfilePage /> },
   { path: "/call", element: <CallPage /> },
@@ -57,6 +78,7 @@ const router = createBrowserRouter([
   { path: "/admin/calls", element: <AdminCallsPage /> },
   { path: "/admin/settings", element: <AdminSettingsPage /> },*/
 ]);
+document.title = "One2One";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
